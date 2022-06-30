@@ -5,8 +5,10 @@
   "license": "MIT",
   "dependencies": {
     "axios": "^0.27.2",
+    "cors": "^2.8.5",
     "dotenv": "^16.0.1",
     "express": "^4.18.1",
+    "express-validator": "^6.14.2",
     "qs": "^6.11.0"
   },
   "scripts": {
@@ -14,6 +16,7 @@
     "tsc": "tsc --watch"
   },
   "devDependencies": {
+    "@types/cors": "^2.8.12",
     "@types/express": "^4.17.13"
   }
 }

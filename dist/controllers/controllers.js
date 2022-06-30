@@ -13,6 +13,7 @@ exports.sendContactEmail = void 0;
 const sendContactEmail = (request, response) => __awaiter(void 0, void 0, void 0, function* () {
     const recaptchaRes = request.body["g-recaptcha-response"];
     const { from, subject, message } = request.body;
+    console.log(request.body);
     console.log("Todo correcto");
     response.json({
         ok: true,

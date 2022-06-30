@@ -43,6 +43,7 @@ dotenv_1.default.config();
 const G_RECAPTCHA_SECRET = process.env.G_RECAPTCHA_SECRET;
 const validateRecaptchaRes = (request, response, next) => __awaiter(void 0, void 0, void 0, function* () {
     const recaptchaRes = request.body["g-recaptcha-response"];
+    console.log(request.body);
     if (!recaptchaRes) {
         response.status(401).json({ ok: false, msg: "El recaptcha es obligatorio" });
         return;
@@ -60,17 +61,14 @@ const validateRecaptchaRes = (request, response, next) => __awaiter(void 0, void
         };
         const validationResponse = yield (0, axios_1.default)(config);
         if (validationResponse.status !== 200) {
-            console.log(validationResponse.status);
-            response.status(502).json({ ok: false, msg: "Hubo un error en la petición" });
+            response.status(502).json({ ok: false, msg: "Hubo un error en la petición de la validación" });
             return;
         }
         if (!validationResponse.data.success) {
-            console.log(validationResponse.data);
             response.status(502).json({ ok: false, msg: "El recaptcha no es válido", error: validationResponse.data });
             return;
         }
         else {
-            console.log(validationResponse.data);
             next();
         }
     }

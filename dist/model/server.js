@@ -28,6 +28,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Server = void 0;
 const express_1 = __importStar(require("express"));
+const cors_1 = __importDefault(require("cors"));
 const routes_1 = __importDefault(require("../routes/routes"));
 class Server {
     constructor() {
@@ -40,6 +41,7 @@ class Server {
         this.routes();
     }
     middlewares() {
+        this.app.use((0, cors_1.default)());
         this.app.use((0, express_1.json)());
     }
     routes() {
