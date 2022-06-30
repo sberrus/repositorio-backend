@@ -32,19 +32,19 @@ const routes_1 = __importDefault(require("../routes/routes"));
 class Server {
     constructor() {
         this.apiPath = {
-            contactEmail: "/api/contact-email",
+            contactForm: "/api/contact-form",
         };
         this.app = (0, express_1.default)();
-        this.port = process.env.PORT || "8000";
+        this.port = process.env.PORT || "8080";
         this.middlewares();
         this.routes();
     }
     middlewares() {
-        //
         this.app.use((0, express_1.json)());
     }
     routes() {
-        this.app.use(this.apiPath.contactEmail, routes_1.default);
+        // contact-form api
+        this.app.use(this.apiPath.contactForm, routes_1.default);
     }
     listen() {
         this.app.listen(this.port, () => {

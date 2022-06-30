@@ -5,21 +5,21 @@ export class Server {
 	private app: Application;
 	private port: string;
 	private apiPath = {
-		contactEmail: "/api/contact-email",
+		contactForm: "/api/contact-form",
 	};
 	constructor() {
 		this.app = express();
-		this.port = process.env.PORT || "8000";
+		this.port = process.env.PORT || "8080";
 		this.middlewares();
 		this.routes();
 	}
 
 	middlewares() {
-		//
 		this.app.use(json());
 	}
 	routes() {
-		this.app.use(this.apiPath.contactEmail, router);
+		// contact-form api
+		this.app.use(this.apiPath.contactForm, router);
 	}
 
 	listen() {

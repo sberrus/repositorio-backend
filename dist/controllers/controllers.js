@@ -1,13 +1,22 @@
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.sendContactEmail = void 0;
-const sendContactEmail = (req, res) => {
-    const body = req.body;
-    res.json({
-        ok: true,
-        msg: "Holi",
-        body,
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.sendContactEmail = void 0;
+const sendContactEmail = (request, response) => __awaiter(void 0, void 0, void 0, function* () {
+    const recaptchaRes = request.body["g-recaptcha-response"];
+    const { from, subject, message } = request.body;
+    console.log("Todo correcto");
+    response.json({
+        ok: true,
+    });
+});
 exports.sendContactEmail = sendContactEmail;
 //# sourceMappingURL=controllers.js.map
