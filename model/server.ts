@@ -22,6 +22,10 @@ export class Server {
 	routes() {
 		// contact-form api
 		this.app.use(this.apiPath.contactForm, router);
+		this.app.get("/ping", (req, res) => {
+			console.log(req.url);
+			res.send("pong");
+		});
 	}
 
 	listen() {

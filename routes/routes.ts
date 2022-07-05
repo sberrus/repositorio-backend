@@ -9,9 +9,6 @@ import { validarCampos } from "../middleware/validarCampos";
  */
 
 const router = Router();
-router.get("/ping", (req, res) => {
-	res.send("pong");
-});
 router.post(
 	"/",
 	[
