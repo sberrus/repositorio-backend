@@ -9,7 +9,6 @@ const G_RECAPTCHA_SECRET = process.env.G_RECAPTCHA_SECRET;
 
 export const validateRecaptchaRes = async (request: Request, response: Response, next: NextFunction) => {
 	const recaptchaRes = request.body["g-recaptcha-response"];
-	console.log(request.body);
 
 	if (!recaptchaRes) {
 		response.status(401).json({ ok: false, msg: "El recaptcha es obligatorio" });

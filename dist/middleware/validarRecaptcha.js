@@ -43,7 +43,6 @@ dotenv_1.default.config();
 const G_RECAPTCHA_SECRET = process.env.G_RECAPTCHA_SECRET;
 const validateRecaptchaRes = (request, response, next) => __awaiter(void 0, void 0, void 0, function* () {
     const recaptchaRes = request.body["g-recaptcha-response"];
-    console.log(request.body);
     if (!recaptchaRes) {
         response.status(401).json({ ok: false, msg: "El recaptcha es obligatorio" });
         return;

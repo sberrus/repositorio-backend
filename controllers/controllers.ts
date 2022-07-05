@@ -1,12 +1,9 @@
 import { Request, Response } from "express";
 
 export const sendContactEmail = async (request: Request, response: Response) => {
-	const recaptchaRes = request.body["g-recaptcha-response"];
-	const { from, subject, message } = request.body;
+	// send email
 
-	console.log(request.body);
-
-	console.log("Todo correcto");
+	console.log("Correo enviado con exito");
 	response.json({
 		ok: true,
 	});

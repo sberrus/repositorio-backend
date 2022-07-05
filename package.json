@@ -13,7 +13,9 @@
   },
   "scripts": {
     "dev": "nodemon ./dist/app.js",
-    "tsc": "tsc --watch"
+    "tsc": "tsc --watch",
+    "start": "node dist/app.js",
+    "postinstall": "tsc"
   },
   "devDependencies": {
     "@types/cors": "^2.8.12",

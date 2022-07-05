@@ -11,10 +11,8 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.sendContactEmail = void 0;
 const sendContactEmail = (request, response) => __awaiter(void 0, void 0, void 0, function* () {
-    const recaptchaRes = request.body["g-recaptcha-response"];
-    const { from, subject, message } = request.body;
-    console.log(request.body);
-    console.log("Todo correcto");
+    // send email
+    console.log("Correo enviado con exito");
     response.json({
         ok: true,
     });
