@@ -9,7 +9,7 @@ export const sendEmail = async (from: string, subject: string, message: string) 
 	let transporter = nodemailer.createTransport({
 		host: "smtp.ionos.es",
 		port: 465,
-		secure: false, // true for 465, false for other ports
+		secure: true, // true for 465, false for other ports
 		auth: {
 			user: SENDER_EMAIL, // generated ethereal user
 			pass: SENDER_PASSWORD, // generated ethereal password
