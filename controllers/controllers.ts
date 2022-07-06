@@ -6,7 +6,9 @@ export const sendContactEmail = async (request: Request, response: Response) => 
 	// send email
 	try {
 		await sendEmail(from, subject, message);
-	} catch (error) {}
+	} catch (error) {
+		console.log(error);
+	}
 
 	console.log("Correo enviado con exito");
 	response.json({
