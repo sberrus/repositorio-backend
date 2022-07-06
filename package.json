@@ -9,6 +9,7 @@
     "dotenv": "^16.0.1",
     "express": "^4.18.1",
     "express-validator": "^6.14.2",
+    "nodemailer": "^6.7.6",
     "qs": "^6.11.0"
   },
   "scripts": {
@@ -20,6 +21,7 @@
   "devDependencies": {
     "@types/cors": "^2.8.12",
     "@types/express": "^4.17.13",
+    "@types/nodemailer": "^6.4.4",
     "typescript": "^4.7.4"
   }
 }
