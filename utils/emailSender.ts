@@ -9,30 +9,36 @@ export const sendEmail = async (from: string, subject: string, message: string) 
 	let transporter = nodemailer.createTransport({
 		host: "smtp.ionos.es",
 		port: 465,
-		secure: true, // true for 465, false for other ports
+		secure: false, // true for 465, false for other ports
 		auth: {
 			user: SENDER_EMAIL, // generated ethereal user
 			pass: SENDER_PASSWORD, // generated ethereal password
 		},
 	});
 	// send mail with defined transport object
-	let info = await transporter.sendMail({
-		from: `"samdev's form" <webmaster@samdev.es>`, // sender address
-		to: `${RECEIVER_EMAIL}`, // list of receivers
-		subject: `samdev's form: ${subject}`, // Subject line
-		text: `
-		<div>
-			<h5>Correo del emisor: ${from}</h5>
-			<hr/>
-			<p>${message}</p>
-		</div>
-		`, // plain text body
-		html: `
-		<div>
-			<h5>Correo del emisor: ${from}</h5>
-			<hr/>
-			<p>${message}</p>
-		</div>
-		`, // html body
-	});
+
+	try {
+		await transporter.sendMail({
+			from: `"samdev's form" <webmaster@samdev.es>`, // sender address
+			to: `${RECEIVER_EMAIL}`, // list of receivers
+			subject: `samdev's form: ${subject}`, // Subject line
+			text: `
+			<div>
+				<h5>Correo del emisor: ${from}</h5>
+				<hr/>
+				<p>${message}</p>
+			</div>
+			`, // plain text body
+			html: `
+			<div>
+				<h5>Correo del emisor: ${from}</h5>
+				<hr/>
+				<p>${message}</p>
+			</div>
+			`, // html body
+		});
+	} catch (error) {
+		console.log(error);
+		throw new Error("Error la enviar el email");
+	}
 };

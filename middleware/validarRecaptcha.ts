@@ -11,8 +11,7 @@ export const validateRecaptchaRes = async (request: Request, response: Response,
 	const recaptchaRes = request.body["g-recaptcha-response"];
 
 	if (!recaptchaRes) {
-		response.status(401).json({ ok: false, msg: "El recaptcha es obligatorio" });
-		return;
+		return response.status(401).json({ ok: false, msg: "El recaptcha es obligatorio" });
 	}
 
 	try {
@@ -29,18 +28,18 @@ export const validateRecaptchaRes = async (request: Request, response: Response,
 
 		const validationResponse = await axios(config);
 		if (validationResponse.status !== 200) {
-			response.status(502).json({ ok: false, msg: "Hubo un error en la petición de la validación" });
-			return;
+			return response.status(502).json({ ok: false, msg: "Hubo un error en la petición de la validación" });
 		}
 		if (!validationResponse.data.success) {
-			response.status(502).json({ ok: false, msg: "El recaptcha no es válido", error: validationResponse.data });
-			return;
+			return response
+				.status(502)
+				.json({ ok: false, msg: "El recaptcha no es válido", error: validationResponse.data });
 		} else {
 			next();
 		}
 	} catch (error) {
 		console.log(error);
-		response.status(500).json({
+		return response.status(500).json({
 			ok: false,
 			msg: "Error en el servidor - recaptcha",
 		});
