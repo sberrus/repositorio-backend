@@ -12,7 +12,7 @@ const router = Router();
 router.post(
 	"/",
 	[
-		body("g-recaptcha-response").notEmpty().isLength({ min: 300, max: 500 }).bail(),
+		body("g-recaptcha-response").notEmpty().withMessage("El recaptcha cannot be empty"),
 		body("from").notEmpty().isEmail(),
 		body("subject")
 			.notEmpty()
